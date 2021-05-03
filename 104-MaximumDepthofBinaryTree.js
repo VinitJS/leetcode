@@ -6,10 +6,12 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
+
 /**
  * @param {TreeNode} root
  * @return {number}
  */
+
  var maxDepth = function(root) {
     if(!root) return 0;
     function goDeep(node, num) {
@@ -20,4 +22,16 @@
     let depth = 0;
     goDeep(root, 1)
     return depth
+};
+
+
+// SECOND METHOD
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+
+var maxDepth = function(root) {
+    if (!root) return 0;
+    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 };
