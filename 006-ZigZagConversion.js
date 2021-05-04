@@ -4,7 +4,7 @@
  * @param {number} numRows
  * @return {string}
  */
- var convert = function(str, numRows) {
+var convert = function(str, numRows) {
     let s=0;
     const matrix = Array(numRows).fill("")
     loop1:
