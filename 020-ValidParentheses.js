@@ -4,20 +4,25 @@
  * @return {boolean}
  */
  var isValid = function(s) {
-    let arr = ""
+    let arr = [];
     for(let i=0; i<s.length; i++) {
-        if (s[i]==="{") arr = "}" + arr;
-        else if (s[i]==="[") arr = "]" + arr;
-        else if (s[i]==="(") arr = ")" + arr;
-        else {
-            if (arr[0] === s[i]) {
-                arr = arr.substr(1);
-            } else {
-                return false;
+        switch (s.charAt(i)) {
+            case "{": {
+                arr.push("}");
+                break;
             }
+            case "[": {
+                arr.push("]");
+                break;
+            }
+            case "(": {
+                arr.push(")");
+                break;
+            }
+            default: if(s[i] !== arr.pop()) return false;
         }
     }
-    return arr.length === 0 ? true : false;
+    return arr.length === 0;
 };
 
-console.log(isValid("("));
+console.log(isValid("[()]"));
